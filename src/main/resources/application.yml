@@ -3,7 +3,7 @@ spring:
     name: ProjectRodarteNogueira
 
   datasource:
-    url: jdbc:mysql://localhost:3306/rodarte?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/rodarte?useSSL=true&requireSSL=true&allowPublicKeyRetrieval=true
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver

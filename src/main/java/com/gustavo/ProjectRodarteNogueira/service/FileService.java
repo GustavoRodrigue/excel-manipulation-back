@@ -1,11 +1,14 @@
 package com.gustavo.ProjectRodarteNogueira.service;
 
+import com.gustavo.ProjectRodarteNogueira.dto.StudentDTO;
 import com.gustavo.ProjectRodarteNogueira.model.Student;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -37,6 +40,83 @@ public class FileService {
 
         return students;
     }
+
+    public byte[] exportStudents(List<StudentDTO> students) throws IOException {
+        try (Workbook workbook = new XSSFWorkbook();
+             ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+
+            Sheet sheet = workbook.createSheet("Alunos");
+
+            CellStyle headerStyle = createHeaderStyle(workbook);
+            CellStyle centerStyle = createCenterAlignedStyle(workbook);
+
+            createHeaderRow(sheet, headerStyle);
+
+            int rowIndex = 2;
+            for (StudentDTO student : students) {
+                Row row = sheet.createRow(rowIndex++);
+                createStudentRow(row, student, centerStyle);
+            }
+
+            autoSizeColumns(sheet, 5);
+
+            workbook.write(outputStream);
+            return outputStream.toByteArray();
+        }
+    }
+
+    private CellStyle createHeaderStyle(Workbook workbook) {
+        CellStyle style = workbook.createCellStyle();
+        Font font = workbook.createFont();
+        font.setBold(true);
+        style.setFont(font);
+        style.setAlignment(HorizontalAlignment.CENTER);
+        return style;
+    }
+
+    private CellStyle createCenterAlignedStyle(Workbook workbook) {
+        CellStyle style = workbook.createCellStyle();
+        style.setAlignment(HorizontalAlignment.CENTER);
+        return style;
+    }
+
+    private void createHeaderRow(Sheet sheet, CellStyle style) {
+        sheet.createRow(0);
+        Row header = sheet.createRow(1);
+
+        String[] titles = {"Identificação", "Nome", "Idade", "Média das Notas"};
+
+        for (int i = 0; i < titles.length; i++) {
+            Cell cell = header.createCell(i + 1);
+            cell.setCellValue(titles[i]);
+            cell.setCellStyle(style);
+        }
+    }
+
+    private void createStudentRow(Row row, StudentDTO student, CellStyle style) {
+        Cell cellId = row.createCell(1);
+        cellId.setCellValue(student.getId());
+        cellId.setCellStyle(style);
+
+        Cell cellName = row.createCell(2);
+        cellName.setCellValue(student.getName());
+        cellName.setCellStyle(style);
+
+        Cell cellAge = row.createCell(3);
+        cellAge.setCellValue(student.getAge());
+        cellAge.setCellStyle(style);
+
+        Cell cellAverage = row.createCell(4);
+        cellAverage.setCellValue(student.getAverage());
+        cellAverage.setCellStyle(style);
+    }
+
+    private void autoSizeColumns(Sheet sheet, int totalColumns) {
+        for (int i = 1; i < totalColumns; i++) {
+            sheet.autoSizeColumn(i);
+        }
+    }
+
 
     private Student parseStudentFromRow(Row row) {
         return Student.builder()

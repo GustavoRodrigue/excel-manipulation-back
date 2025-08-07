@@ -1,5 +1,6 @@
 package com.gustavo.ProjectRodarteNogueira.controller;
 
+import com.gustavo.ProjectRodarteNogueira.dto.ErrorResposeDto;
 import com.gustavo.ProjectRodarteNogueira.dto.StudentDTO;
 import com.gustavo.ProjectRodarteNogueira.model.Student;
 import com.gustavo.ProjectRodarteNogueira.service.StudentService;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -23,8 +25,20 @@ public class StudentController {
     }
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<List<Student>> saveList(@RequestParam MultipartFile file) {
-        return ResponseEntity.ok(this.studentService.saveList(file));
+    public ResponseEntity<String> saveList(@RequestParam("file") MultipartFile file) {
+        if (file == null || file.isEmpty()) {
+            return ResponseEntity.badRequest().body("Arquivo não enviado ou vazio.");
+        }
+        String filename = file.getOriginalFilename();
+        if (filename == null || !filename.toLowerCase().endsWith(".xlsx")) {
+            return ResponseEntity.badRequest().body("Somente arquivos '.xlsx' são aceitos.");
+        }
+        try {
+            List<Student> students = studentService.saveList(file);
+            return ResponseEntity.ok().body("Arquivo enviado com sucesso!");
+        } catch (Exception e) {
+            throw new ErrorResposeDto(e.getMessage());
+        }
     }
 
     @GetMapping

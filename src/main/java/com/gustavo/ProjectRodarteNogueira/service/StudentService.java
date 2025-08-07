@@ -1,11 +1,13 @@
 package com.gustavo.ProjectRodarteNogueira.service;
 
+import com.gustavo.ProjectRodarteNogueira.dto.ErrorDto;
 import com.gustavo.ProjectRodarteNogueira.dto.StudentDTO;
 import com.gustavo.ProjectRodarteNogueira.model.Student;
 import com.gustavo.ProjectRodarteNogueira.repository.StudentRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -39,4 +41,6 @@ public class StudentService {
     public byte[] generateReport() throws IOException {
         return this.fileService.exportStudents(this.findAllSortAge());
     }
+
+
 }

@@ -1,13 +1,13 @@
-package com.gustavo.ProjectRodarteNogueira;
+package com.gustavo.ExcelManipulationBack;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProjectRodarteNogueiraApplication {
+public class ExcelManipulationBackApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProjectRodarteNogueiraApplication.class, args);
+		SpringApplication.run(ExcelManipulationBackApplication.class, args);
 	}
 
 }

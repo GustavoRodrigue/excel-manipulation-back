@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.gustavo</groupId>
-	<artifactId>ProjectRodarteNogueira</artifactId>
+	<artifactId>ExcelManipulationBack</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ProjectLerExcel</name>
 	<description>Demo project for Spring Boot</description>

@@ -1,4 +1,4 @@
-package com.gustavo.ProjectRodarteNogueira.model;
+package com.gustavo.ExcelManipulationBack.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

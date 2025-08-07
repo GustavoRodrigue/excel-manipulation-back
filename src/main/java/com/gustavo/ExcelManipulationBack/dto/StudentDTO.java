@@ -1,6 +1,6 @@
-package com.gustavo.ProjectRodarteNogueira.dto;
+package com.gustavo.ExcelManipulationBack.dto;
 
-import com.gustavo.ProjectRodarteNogueira.model.Student;
+import com.gustavo.ExcelManipulationBack.model.Student;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

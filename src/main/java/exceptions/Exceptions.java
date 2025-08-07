@@ -1,16 +1,13 @@
 package exceptions;
 
-import com.gustavo.ProjectRodarteNogueira.dto.ErrorDto;
-import com.gustavo.ProjectRodarteNogueira.dto.ErrorResposeDto;
-import org.apache.poi.EmptyFileException;
+import com.gustavo.ExcelManipulationBack.dto.ErrorDto;
+import com.gustavo.ExcelManipulationBack.dto.ErrorResposeDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.NoHandlerFoundException;
-import org.springframework.web.servlet.resource.NoResourceFoundException;
-
 
 
 @ControllerAdvice

@@ -1,4 +1,4 @@
-package com.gustavo.ProjectRodarteNogueira.dto;
+package com.gustavo.ExcelManipulationBack.dto;
 
 import lombok.Data;
 

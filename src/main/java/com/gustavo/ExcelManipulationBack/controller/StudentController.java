@@ -1,9 +1,9 @@
-package com.gustavo.ProjectRodarteNogueira.controller;
+package com.gustavo.ExcelManipulationBack.controller;
 
-import com.gustavo.ProjectRodarteNogueira.dto.ErrorResposeDto;
-import com.gustavo.ProjectRodarteNogueira.dto.StudentDTO;
-import com.gustavo.ProjectRodarteNogueira.model.Student;
-import com.gustavo.ProjectRodarteNogueira.service.StudentService;
+import com.gustavo.ExcelManipulationBack.dto.ErrorResposeDto;
+import com.gustavo.ExcelManipulationBack.dto.StudentDTO;
+import com.gustavo.ExcelManipulationBack.model.Student;
+import com.gustavo.ExcelManipulationBack.service.StudentService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -49,7 +48,7 @@ public class StudentController {
     @GetMapping("/export")
     public ResponseEntity<byte[]> generateReport() throws IOException {
         return ResponseEntity.ok()
-            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=relatorio_rodarte.xlsx")
+            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=alunos.xlsx")
             .contentType(MediaType.APPLICATION_OCTET_STREAM)
             .body(this.studentService.generateReport());
     }

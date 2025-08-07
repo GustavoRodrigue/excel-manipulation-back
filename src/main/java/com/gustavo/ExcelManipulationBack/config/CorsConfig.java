@@ -1,4 +1,4 @@
-package com.gustavo.ProjectRodarteNogueira.config;
+package com.gustavo.ExcelManipulationBack.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

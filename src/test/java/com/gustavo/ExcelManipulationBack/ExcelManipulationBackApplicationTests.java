@@ -1,10 +1,10 @@
-package com.gustavo.ProjectRodarteNogueira;
+package com.gustavo.ExcelManipulationBack;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ProjectRodarteNogueiraApplicationTests {
+class ExcelManipulationBackApplicationTests {
 
 	@Test
 	void contextLoads() {

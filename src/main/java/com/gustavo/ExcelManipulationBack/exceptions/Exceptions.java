@@ -1,4 +1,4 @@
-package exceptions;
+package com.gustavo.ExcelManipulationBack.exceptions;
 
 import com.gustavo.ExcelManipulationBack.dto.ErrorDto;
 import com.gustavo.ExcelManipulationBack.dto.ErrorResposeDto;
